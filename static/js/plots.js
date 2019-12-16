@@ -52,40 +52,20 @@ function buildCharts(sample) {
 
         Plotly.newPlot('Bubble Chart', data, layout);
 
-        // @TODO: Build a Bar Chart
+        // @TODO: Build a Pie Chart
         var data = data.sample_values.sort((first, second) => second - first);
-        // var data = data.slice(0, 10)
+        var data = data.slice(0, 10)
 
         var trace2 = {
-            x: titles,
-            y: values,
-            type: "bar"
+            labels: data.otu_ids,
+            values: data.sample_values,
+            text: data.otu_labels,
+            type: "pie"
         };
 
-        // 6. Create the data array for our plot
         var data = [trace2];
 
-        // 7. Define our plot layout
-        var layout = {
-            title: "The highest critically acclaimed movies",
-            xaxis: { title: "Title" },
-            yaxis: { title: "Metascore (Critic) Rating" }
-        };
-
-        // 8. Plot the chart to a div tag with id "bar-plot"
-        Plotly.newPlot("bar-plot", data, layout);
-
-
-        //var trace2 = {
-        //labels: data.otu_ids,
-        //values: data.sample_values,
-        //text: data.otu_labels,
-        //type: "bar"
-        //};
-
-        //var data = [trace2];
-
-        //Plotly.newPlot("bar-plot", data, layout);
+        Plotly.newPlot("Pie Graph", data);
     })
 };
 
